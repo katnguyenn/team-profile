@@ -10,6 +10,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const team = [];
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -59,7 +61,8 @@ function teamMembers() {
                 ]).then(function (engineerData) {
                     const engineerMember = new Engineer(engineerData.name, engineerData.role, engineerData.id, engineerData.email, engineerData.github);
                     console.log(engineerMember);
-                    
+                    team.push(engineerMember);
+                    addMember();
                 })
             }
             else if (response.role === "Intern") {
@@ -70,9 +73,10 @@ function teamMembers() {
                         name: "school"
                     }
                 ]).then(function (internData) {
-                    const internMember = new Intern(internData.name, internData.role, internData.id, internData.email, internData.github);
+                    const internMember = new Intern(internData.name, internData.role, internData.id, internData.email, internData.school);
                     console.log(internMember);
-                    
+                    team.push(internMember);
+                    addMember();
                 })
             } else {
                 inquirer.prompt([
@@ -82,15 +86,28 @@ function teamMembers() {
                         name: "number"
                     }
                 ]).then(function (managerData) {
-                    const managerMember = new Manager(managerData.name, managerData.role, managerData.id, managerData.email, managerData.github);
+                    const managerMember = new Manager(managerData.name, managerData.role, managerData.id, managerData.email, managerData.number);
                     console.log(managerMember);
-                    
+                    team.push(managerMember);
+                    addMember();
                 })
 
 
             }
         });
 
+}
+
+function addMember() {
+    inquirer.prompt([
+        {
+            type: "confirm",
+            message: "Do you want to add more team members?",
+            name: "member"
+        }
+    ]).then(function (confirm) {
+        confirm ? teamMembers() : generateHTML();
+    })
 }
 
 

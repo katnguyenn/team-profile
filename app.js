@@ -17,86 +17,119 @@ const team = [];
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 function teamMembers() {
-    return inquirer.prompt([
-        {
-            type: "input",
-            message: "Enter team member's name.",
-            name: "name"
-        },
+    try {
+        return inquirer.prompt([
 
-        {
+            {
 
-            type: "list",
-            message: "Enter team member's role.",
-            choices: [
-                "Manager",
-                "Engineer",
-                "Intern"
-            ],
-            name: "role"
+                type: "list",
+                message: "Enter team member's role.",
+                choices: [
+                    "Manager",
+                    "Engineer",
+                    "Intern"
+                ],
+                name: "role"
 
-        },
-        {
-            type: "input",
-            message: "Enter team member's id.",
-            name: "id"
-        },
-        {
-            type: "input",
-            message: "Enter team member's email.",
-            name: "email"
-        },
+            },
 
-
-
-    ])
-        .then(function (response) {
+        ]).then(response => {
             if (response.role === "Engineer") {
                 inquirer.prompt([
+
+                    {
+
+                        type: "input",
+                        message: "Enter team member's name.",
+                        name: "name"
+                    },
+
+
+                    {
+                        type: "input",
+                        message: "Enter team member's id.",
+                        name: "id"
+                    },
+                    {
+                        type: "input",
+                        message: "Enter team member's email.",
+                        name: "email"
+                    },
                     {
                         type: "input",
                         message: "Please enter Github username",
                         name: "github"
                     }
-                ]).then(function (engineerData) {
-                    const engineerMember = new Engineer(engineerData.name, engineerData.role, engineerData.id, engineerData.email, engineerData.github);
-                    console.log(engineerMember);
-                    team.push(engineerMember);
-                    addMember();
-                })
-            }
-            else if (response.role === "Intern") {
+
+                ]);
+            } else if (response.role === "Intern") {
                 inquirer.prompt([
+
+                    {
+
+                        type: "input",
+                        message: "Enter team member's name.",
+                        name: "name"
+                    },
+
+
+                    {
+                        type: "input",
+                        message: "Enter team member's id.",
+                        name: "id"
+                    },
+                    {
+                        type: "input",
+                        message: "Enter team member's email.",
+                        name: "email"
+                    },
                     {
                         type: "input",
                         message: "Please enter school name",
                         name: "school"
                     }
-                ]).then(function (internData) {
-                    const internMember = new Intern(internData.name, internData.role, internData.id, internData.email, internData.school);
-                    console.log(internMember);
-                    team.push(internMember);
-                    addMember();
-                })
+
+                ]);
             } else {
                 inquirer.prompt([
+
+                    {
+
+                        type: "input",
+                        message: "Enter team member's name.",
+                        name: "name"
+                    },
+
+
+                    {
+                        type: "input",
+                        message: "Enter team member's id.",
+                        name: "id"
+                    },
+                    {
+                        type: "input",
+                        message: "Enter team member's email.",
+                        name: "email"
+                    },
                     {
                         type: "input",
                         message: "Please enter office number",
-                        name: "number"
+                        name: "officeNumber"
                     }
-                ]).then(function (managerData) {
-                    const managerMember = new Manager(managerData.name, managerData.role, managerData.id, managerData.email, managerData.number);
-                    console.log(managerMember);
-                    team.push(managerMember);
-                    addMember();
-                })
 
+                ]);
 
             }
-        });
+        })
+
+    } catch (err) {
+        console.log(err);
+    }
+
 
 }
+
+
 
 function addMember() {
     inquirer.prompt([
@@ -106,9 +139,10 @@ function addMember() {
             name: "member"
         }
     ]).then(function (confirm) {
-        confirm ? teamMembers() : generateHTML();
+        confirm ? teamMembers() : render();
     })
 }
+
 
 
 

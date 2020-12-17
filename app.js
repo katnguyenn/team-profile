@@ -157,7 +157,15 @@ function addMember() {
     })
 }
 
+//Called render function and passed in array containing all employee objects
 
+function loadPage() {
+    const cards = render(team)
+    fs.writeFile(outputPath, cards, (err) => {
+        if (err) throw err;
+        console.log("Your team profile has been generated!")
+    })
+}
 
 
 

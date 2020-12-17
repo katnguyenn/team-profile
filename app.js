@@ -13,8 +13,8 @@ const render = require("./lib/htmlRenderer");
 const team = [];
 
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+// Code to use inquirer to gather information about the development team members,
+// and to create objects for each team member.
 
 function teamMembers() {
     try {
@@ -143,6 +143,7 @@ function teamMembers() {
 
 }
 
+// Option to add more team members
 
 function addMember() {
     inquirer.prompt([
@@ -157,7 +158,7 @@ function addMember() {
     })
 }
 
-//Called render function and passed in array containing all employee objects
+// Generate team profile
 
 function loadPage() {
     const cards = render(team)

@@ -6,6 +6,8 @@ Built a software engineering team generator command line application. The applic
 
 Genereated webpage that displays team's basic information so that managers can have quick access to emails and Github profiles.
 
+
+
 ## Installation
 npm install jest
 
@@ -13,9 +15,10 @@ npm inquirer
 
 ## Usage
 
-![Team Profile Recording](teamprofile.gif)
+![Team Profile Recording](public/assets/teamprofile.gif)
 
-![My Team](myteam.png)
+
+<img src="public/assets/team-profile.png" width="90%">
 
 
 

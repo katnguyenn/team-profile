@@ -18,7 +18,7 @@ npm inquirer
 ![Team Profile Recording](public/assets/teamprofile.gif)
 
 
-<img src="public/assets/team-profile.png" width="75%">
+<img src="public/assets/team-profile.png" alt="Team Profile Image" width="75%">
 
 
 

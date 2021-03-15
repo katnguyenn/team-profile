@@ -21,4 +21,5 @@ npm inquirer
 <img src="public/assets/team-profile.png" alt="Team Profile Image" width="75%">
 
 
-
+## Link
+[LinkedIn](https://www.linkedin.com/in/katherine-nguyen-205a7b13a/)
